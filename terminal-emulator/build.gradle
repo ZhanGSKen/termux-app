@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
+apply from: 'localandwinboll-maven-publish.gradle'
 
 android {
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
@@ -59,17 +60,17 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.termux'
-                artifactId = 'terminal-emulator'
-                version = '0.118.0'
-                artifact(sourceJar)
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.termux'
+//                artifactId = 'terminal-emulator'
+//                version = '0.118.0'
+//                artifact(sourceJar)
+//            }
+//        }
+//    }
+//}

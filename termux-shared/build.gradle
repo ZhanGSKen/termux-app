@@ -1,7 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
+apply from: 'localandwinboll-maven-publish.gradle'
+
+// 定义 lint 输出文件
+def lintXmlReportFile = file('lint-results.xml')
+def lintHTMLReportFile = file('lint-results.html')
+
 
 android {
+
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
 
     dependencies {
@@ -74,17 +81,17 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.termux'
-                artifactId = 'termux-shared'
-                version = '0.118.0'
-                artifact(sourceJar)
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.termux'
+//                artifactId = 'termux-shared'
+//                version = '0.118.0'
+//                artifact(sourceJar)
+//            }
+//        }
+//    }
+//}
