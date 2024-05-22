@@ -4,6 +4,7 @@
 
 # Built application files
 build/
+.androidide/
 release/
 *.apk
 *.so
